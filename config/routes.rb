@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get "/users/:id/edit", to: "users#edit"
   post "/users/:id/edit", to: "users#edit"
+  post "/users/:id", to: "users#delete"
   #get "about", to: "about#index"
 
   get "/users/:id/friends", to: "users#friends"

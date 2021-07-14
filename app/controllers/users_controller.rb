@@ -52,14 +52,19 @@ class UsersController < ApplicationController
 
     end
 
-    def friends
-
-    end
-
     def delete
         @user = User.find_by(id: params[:id])
         @user.destroy
+        redirect_to new_user_path
     end
+
+    #--------------------------------------------------------------------- Non-CRUD methods
+
+    def friends
+        @user = User.find_by(id: params[:id])
+    end
+
+    
 
 
     private
