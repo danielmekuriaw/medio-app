@@ -7,14 +7,32 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Preference.destroy_all
 
 10.times do
-    user= User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
-    user.followers << User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
+    user= User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
+    user.followers << User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
 end
 
 User.all.each{ |user|
     user.followers.each{ |follower|
-        puts follower.first_name
+        puts follower.bio
     }
 }
+
+preferences = [:airport, :aquarium, :art_gallery, 
+    :bakery, :bank, :bar, :beauty_salon, :book_store, 
+    :bowling_alley, :bus_station, :cafe, :casino, 
+    :cemetery, :church, :city_hall, :department_store, 
+    :electronics_store, :furniture_store, :gas_station, :gym, :hair_care, :hindu_temple, 
+    :hospital, :jewelry_store, :laundry, :library, :liquor_store, :mosque, :movie_theater, 
+    :museum, :night_club, :park, :pet_store, :pharmacy, :restaurant, :shopping_mall, 
+    :spa, :stadium, :subway_station, :supermarket, :synagogue, :taxi_stand, :tourist_attraction, 
+    :train_station, :transit_station, :university, :zoo]
+
+preferences.each{ |preference|
+    Preference.create(preference_type: preference.to_s)
+    puts preference.to_s
+}
+
+puts "Finished creating preferences!"

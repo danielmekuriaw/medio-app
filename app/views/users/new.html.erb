@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Sign Up</title>
+        </head>
+
+        <body>
+
+            <h1 align="center">Welcome to Medio!</h1>
+
+            <%= form_with model: @user do |f|%>
+                <strong> <%=f.label :first_name %> </strong>
+                <%= f.text_field :first_name%> <br> <br>
+
+                <strong> <%=f.label :last_name%> </strong>
+                <%=f.text_field :last_name%> <br> <br>
+
+                <strong> <%=f.label :username%> </strong>
+                <%=f.text_field :username%> <br> <br>
+
+                <strong> <%=f.label :birth_date%> </strong>
+                <%=f.date_field :birth_date%><br><br> 
+
+                <!--type="date" id="date-of-birth" name="date-of-birth"
+                value="2021-07-13"
+                min="1900-01-01" max="2021-07-13"--> 
+
+                <strong> <%= f.label :age %> </strong>
+                <%= f.number_field :age%> <br> <br>
+
+                <strong> <%= f.label :bio%> </strong>
+                <%= f.text_area :bio%> <br><br>
+
+                <p> <strong> Preferences </strong> </p>
+
+                <% @preferences.each do |preference|%>
+                    <%= f.check_box preference.preference_type.to_sym%>
+                    <%= f.label preference.preference_type.to_sym %><br>
+                <% end %>
+
+                <br><br>
+
+                <%= f.submit "Create User"%>
+
+            <% end %>
+
+        </body>
+
+    </html>
