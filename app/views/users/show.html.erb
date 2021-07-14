@@ -1,0 +1,13 @@
+<h1> Name: <%= @user.first_name%> <%= @user.last_name%> </h1>
+<h3> Username: <%= @user.username%> </h3>
+<h3> Age: <%= @user.age%> </h3>
+<h3> Birth Date: <%= @user.birth_date.strftime("%m/%d/%Y")%> </h3>
+<p> <strong> Bio: </strong> <%= @user.bio%> </p>
+<h3> Preferences </h3>
+<ul>
+    <% @user.preferences.each do |preference|%>
+        <li> <strong> <%= preference.preference_type.split('_').map(&:capitalize).join(' ')%> <strong> </li>
+    <% end %>
+</ul>
+
+<%= button_to "Edit Profile", { action: "edit", method: :get}%>

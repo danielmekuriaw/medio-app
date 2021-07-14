@@ -10,15 +10,16 @@ User.destroy_all
 Preference.destroy_all
 
 10.times do
-    user= User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
+    user= User.create!(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
     user.followers << User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
 end
-
-User.all.each{ |user|
-    user.followers.each{ |follower|
-        puts follower.bio
-    }
-}
+#puts User.all.count
+User.all.each do |user|
+    #puts user
+    user.followers.each do |follower|
+        puts follower
+    end
+end
 
 preferences = [:airport, :aquarium, :art_gallery, 
     :bakery, :bank, :bar, :beauty_salon, :book_store, 
@@ -32,7 +33,7 @@ preferences = [:airport, :aquarium, :art_gallery,
 
 preferences.each{ |preference|
     Preference.create(preference_type: preference.to_s)
-    puts preference.to_s
+    #puts preference.to_s
 }
 
 puts "Finished creating preferences!"
