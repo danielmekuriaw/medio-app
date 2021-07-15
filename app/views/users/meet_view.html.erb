@@ -1,0 +1,27 @@
+
+<h2> Meet up! </h2>
+
+<%= form_with model: @journey do |f|%>
+    <br>
+    <strong> <%= f.label "Your Location"%> </strong> <br>
+    <%= f.text_field :origin%> <br><br><br>
+
+    <strong> <%= f.label "Pick a Friend"%> </strong> <br><br>
+    <%= f.collection_select(:user_id, @user.following, :id, :name, prompt: true) %> <br>
+    
+    <h3> OR </h3>
+    <strong> <%= f.label "Type Your Friend's Location below"%> </strong> <br><br>
+    <%= f.text_field :destination%><br><br>
+    
+
+    <%= f.submit "Meet Up!"%>
+<% end %>
+
+<br>
+
+<iframe
+  width="800"
+  height="400"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAmCf0SWHM3vMqJi6oCkLkPaRq3GJ57tis&q=Eiffel+Tower,Paris+France" allowfullscreen>
+</iframe>

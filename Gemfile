@@ -56,3 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 
 gem 'validates_timeliness', '~> 6.0.0.alpha1'
+
+gem 'google_maps_service'
+
+gem 'geocoder'

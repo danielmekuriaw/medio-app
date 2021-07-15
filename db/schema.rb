@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210714151237) do
+ActiveRecord::Schema.define(version: 20210715061033) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "followed_id"
     t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "journeys", force: :cascade do |t|
+    t.string "origin"
+    t.string "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

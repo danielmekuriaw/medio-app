@@ -1,19 +1,28 @@
 <h3> Your Followers </h3>
-<h4> Friends: </h4>
+<h4> Friends (You follow each other): </h4>
 <ul>
-    <% @following.each do |user|%>
+    <% @follow_each_other.each do |user|%>
         <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> </li>
         <br>
     <% end %>
 </ul>
 
 <h4> Followers you don't follow back: </h4>
+    <ul>
+        <% @user_not_following_back.each do |user|%>
+            <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> 
+            <%= button_to "Follow Back", { action: "follow", method: :get, to_be_followed_id: user.id}%> </li>
+            <br>
+            
+        <% end %>
+    </ul>
+<br>
+<h3> People you could follow: </h3>
+
 <ul>
-    <% @not_following.each do |user|%>
-        <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> 
-        <%= button_to "Follow", { action: "follow", method: :get, to_be_followed_id: user.id}%> </li>
-        <br>
-        
+    <% @no_friendship.each do |not_following|%>
+    <li> <%= link_to not_following.first_name + " " +not_following.last_name, user_path(not_following)%>
+    <%= button_to "Follow", { action: "follow", method: :get, to_be_followed_id: not_following.id}%> </li><br>
     <% end %>
 </ul>
 

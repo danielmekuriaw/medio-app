@@ -7,6 +7,9 @@ class User < ApplicationRecord
     has_many :followed, foreign_key: :followed_id, class_name: "Friendship"
     has_many :followers, through: :followed
 
+    has_many :locations
+    has_many :journeys
+
     #Validations
 
     #validates :username, presence: true, uniqueness: true
@@ -16,4 +19,15 @@ class User < ApplicationRecord
     #validates_date :birth_date, on_or_before: lambda { Date.current }
 
     #validates :email, presence: true, uniqueness: true
+
+    def following
+        User.all.select{ |user|
+            user.followers.include? self
+        }
+    end
+
+    def name
+        self.first_name + " " + self.last_name
+    end
+
 end
