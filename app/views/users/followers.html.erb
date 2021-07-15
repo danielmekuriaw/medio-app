@@ -1,0 +1,20 @@
+<h3> Your Followers </h3>
+<h4> Friends: </h4>
+<ul>
+    <% @following.each do |user|%>
+        <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> </li>
+        <br>
+    <% end %>
+</ul>
+
+<h4> Followers you don't follow back: </h4>
+<ul>
+    <% @not_following.each do |user|%>
+        <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> 
+        <%= button_to "Follow", { action: "follow", method: :get, to_be_followed_id: user.id}%> </li>
+        <br>
+        
+    <% end %>
+</ul>
+
+<br>

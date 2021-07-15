@@ -60,8 +60,25 @@ class UsersController < ApplicationController
 
     #--------------------------------------------------------------------- Non-CRUD methods
 
-    def friends
+    def followers
         @user = User.find_by(id: params[:id])
+        
+        @following = User.all.select{|user| user.followers.include? @user}
+        @not_following = User.all.select{|user| !user.followers.include? @user}
+    end
+
+    def following
+        @user = User.find_by(id: params[:id])
+        @following = User.all.select{|user| user.followers.include? @user}
+        @not_following = User.all.select{|user| !user.followers.include? @user}
+    end
+
+    def follow
+        @user = User.find_by(id: params[:id])
+        @followed = User.find_by(id: params[:to_be_followed_id])
+        @followed.followers << @user
+
+        redirect_to user_path(@followed)
     end
 
     

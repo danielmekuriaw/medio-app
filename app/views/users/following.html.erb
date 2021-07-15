@@ -1,0 +1,15 @@
+<h3> You Follow: </h3>
+<ul>
+<% @following.each do |following|%>
+    <li> <%= link_to following.first_name + " " + following.last_name, user_path(following)%> </li>
+    <br>
+<% end %>
+</ul>
+
+<h3> People you could follow: </h3>
+<ul>
+    <% @not_following.each do |not_following|%>
+    <li> <%= link_to not_following.first_name + " " +not_following.last_name, user_path(not_following)%>
+    <%= button_to "Follow", { action: "follow", method: :get, to_be_followed_id: not_following.id}%> </li><br>
+    <% end %>
+</ul>
