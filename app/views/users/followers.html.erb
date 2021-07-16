@@ -3,6 +3,8 @@
 <ul>
     <% @follow_each_other.each do |user|%>
         <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> </li>
+         <%= button_to "Remove", { action: "remove", method: :post, to_be_followed_id: user.id}%>
+         <%= button_to "Unfollow", { action: "unfollow", method: :post, to_be_followed_id: user.id}%>
         <br>
     <% end %>
 </ul>
@@ -11,9 +13,8 @@
     <ul>
         <% @user_not_following_back.each do |user|%>
             <li> <%= link_to user.first_name + " " + user.last_name, user_path(user)%> 
-            <%= button_to "Follow Back", { action: "follow", method: :get, to_be_followed_id: user.id}%> </li>
+            <%= button_to "Follow Back", { action: "follow", method: :post, to_be_followed_id: user.id}%> </li>
             <br>
-            
         <% end %>
     </ul>
 <br>
@@ -22,7 +23,7 @@
 <ul>
     <% @no_friendship.each do |not_following|%>
     <li> <%= link_to not_following.first_name + " " +not_following.last_name, user_path(not_following)%>
-    <%= button_to "Follow", { action: "follow", method: :get, to_be_followed_id: not_following.id}%> </li><br>
+    <%= button_to "Follow", { action: "follow", method: :post, to_be_followed_id: not_following.id}%> </li><br>
     <% end %>
 </ul>
 

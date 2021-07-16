@@ -62,3 +62,13 @@ gem 'google_maps_service'
 gem 'geocoder'
 
 gem 'pandas'
+
+gem 'numpy'
+
+gem 'daru'
+
+gem 'geodesic'
+
+gem 'geodesics'
+
+gem 'geographiclib'

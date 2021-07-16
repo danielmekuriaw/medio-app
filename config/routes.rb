@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :journeys
 
+  get "/aboutus", to: "users#aboutus"
+
   get "/users/:id/edit", to: "users#edit"
   post "/users/:id/edit", to: "users#edit"
   post "/users/:id", to: "users#delete"
@@ -14,11 +16,16 @@ Rails.application.routes.draw do
   get "/users/:id/followers", to: "users#followers"
   get "/users/:id/following", to: "users#following"
 
-  get "/users/:id/follow", to: "users#follow"
+  #get "/users/:id/follow", to: "users#follow"
   post "/users/:id/follow", to: "users#follow"
 
+  post "/users/:id/remove", to: "users#remove"
+  post "/users/:id/unfollow", to: "users#unfollow"
+
   get "/users/:id/meet_view", to: "users#meet_view"
-  post "/users/:id/meet_request", to: "users#meet_request"
+  post "/users/:id/meet_view", to: "users#meet_request"
+
+  #get "/users/:id/:journey_id", to: "users#meet_result"
 
   get "/journeys/:id/meet_view", to: "journeys#meet_view"
 

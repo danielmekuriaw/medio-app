@@ -1,8 +1,9 @@
-            <h1 align="center">Welcome to Medio!</h1>
+<h1 align='center'> Welcome to Medio! Connect and Meet with others! </h1>
+<h4 align='center'> Here to build lasting connections </h4> <br>
 
 <%= render(partial: "errors/errors", locals: {model: @user})%>
 
-            <%= form_with model: @user do |f|%>
+            <%= form_with model: @user, html: {align: "center"} do |f|%>
                 <strong> <%=f.label :first_name %> </strong>
                 <%= f.text_field :first_name%> <br> <br>
 

@@ -1,14 +1,50 @@
-
 <h2> Choose where to meet: </h2>
 
-<h3> Location 1: <%= @journey.point1 %> </h3>
-<h3> Location 2: <%= @journey.point2 %> </h3>
+    <h3> Location 1: <%= @journey.point1 %> </h3>
+    <h3> Location 2: <%= @journey.point2 %> </h3> 
+    <h3> Selected: <%= @journey.preference%> </h3> <br><hr>
 
-<br>
+    <h3> Suggested places to hang out: </h3>
 
-<iframe
+    <div style = "width: 1000px; height: 300px; 
+    line-height: 1em; overflow:scroll; border: 
+    thin #000 solid; padding: 5px;"> 
+          <% @suggestions.each do |suggestion| %>
+            <% if suggestion[:location_info]["status"] != "ZERO_RESULTS"%>
+            <% puts suggestion%>
+            
+                <h4> Destination: <%= @journey.extract_name(suggestion)%> </h4>
+                <p> <strong> Distance from you: </strong> <%= @journey.point1_distance(suggestion)%> meters </p>
+                <p> <strong>Duration of travel: </strong><%= @journey.point1_time(suggestion)%> minutes </p>
+                
+              
+                <p> <strong>Distance from your friend: </strong><%= @journey.point2_distance(suggestion)%> meters </p>
+                <p> <strong>Duration of travel: </strong><%= @journey.point2_time(suggestion)%> minutes </p>
+                
+                <p> <strong>Status: </strong><%= @journey.status_now(suggestion)%> </p>
+                <p> <strong> Tags: </strong><%= @journey.tags(suggestion).map{|tag| @journey.proper_name(tag)}%> </p>
+                <p> <strong> Vicinity:</strong> <%= @journey.vicinity(suggestion)%> </p>
+                <% if @journey.rating(suggestion)%>
+                <p> <strong>Rating: </strong><%=@journey.rating(suggestion)%> </p>
+                <% end %>
+                <p> <strong> Directions for you: </strong> <% @journey.routeFinder(@journey.point1, @journey.point2, @journey.formatted_Address(@journey.extract_name(suggestion)), @journey.mode.downcase)[:steps_for_1].each do |step|%>
+                <%= step %>
+                <% end %> </p>
+
+                <p> <strong> Directions for your friend: </strong> <% @journey.routeFinder(@journey.point1, @journey.point2, @journey.formatted_Address(@journey.extract_name(suggestion)), @journey.mode.downcase)[:steps_for_2].each do |step|%>
+                <%= step %>
+                <% end %> </p>
+                <hr>
+
+                <%end%>
+            <%end%>
+    </div>
+
+    <br>
+
+  <p align="center"> <iframe
   width="800"
   height="400"
   frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAmCf0SWHM3vMqJi6oCkLkPaRq3GJ57tis&q=Eiffel+Tower,Paris+France" allowfullscreen>
-</iframe>
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAmCf0SWHM3vMqJi6oCkLkPaRq3GJ57tis&q=<%= @journey.extract_name(@suggestions.first)%>" allowfullscreen>
+</iframe> </p>

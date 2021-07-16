@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-    def index
+    before_action :redirect_if_not_logged_in, only: [:show, :edit, :update, :delete, :followers, :following, :follow, :meet_view]
+    
+
+    def aboutus
     end
 
     def new
@@ -16,18 +19,6 @@ class UsersController < ApplicationController
         selected_preferences.each{ |preference|
             @user.preferences << Preference.find_by(preference_type: preference)
         }
-        #gmaps = GoogleMapsService::Client.new(key: 'AIzaSyAmCf0SWHM3vMqJi6oCkLkPaRq3GJ57tis')
-        
-        #FIGURE OUT WHAT's WRONG WITH LOCATION HERE!!!!!!!!!!!!!!!!!!!!!!!!!
-        #location = Location.create(name: user_params[:location])
-        
-        #if location.valid? #LOCATION VALIDATION
-        #    location.save
-        #else
-        #    render :new #Review this line
-        #end
-        #location.save
-        #geocode_result = gmaps.geocode(address: location.name)      
         
         if @user.save
           session[:user_id] = @user.id
@@ -39,10 +30,12 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
+        session[:journey_started] = false
     end
 
     def edit
         @user = User.find_by(id: params[:id])
+        @user.preferences = Array.new
         @preferences = Preference.all
     end
 
@@ -75,33 +68,60 @@ class UsersController < ApplicationController
 
     def followers
         @user = User.find_by(id: params[:id])
-        @follow_each_other = User.all.select{|user| (user.followers.include? @user) && (@user.followers.include? user)}
-        @user_not_following_back = User.all.select{|user| (user.followers.include? @user) && (!@user.followers.include? user) }
-        @no_friendship = User.all.select{|user| (!user.followers.include? @user) && (!@user.followers.include? user)}
+        @follow_each_other = @user.follow_each_other
+        @user_not_following_back = @user.user_not_following_back
+        @no_friendship = @user.no_friendship
     end
 
     def following
         @user = User.find_by(id: params[:id])
-        @following = User.all.select{|user| (user.followers.include? @user)}
-        @not_following = User.all.select{|user| (!user.followers.include? @user)}
+        @following = @user.following
+        @not_following = @user.not_following
     end
 
     def follow
         @user = User.find_by(id: params[:id])
         @followed = User.find_by(id: params[:to_be_followed_id])
         @followed.followers << @user
+        @followed.save
 
-        redirect_to user_path(@followed)
+        redirect_back fallback_location: @user
+    end
+
+    def remove
+        @user = User.find_by(id: params[:id])
+        @followed = User.find_by(id: params[:to_be_followed_id])
+        @user.followers.delete(@followed)
+        @followed.save
+
+        redirect_back fallback_location: @user
+    end
+
+    def unfollow
+        @user = User.find_by(id: params[:id])
+        @followed = User.find_by(id: params[:to_be_followed_id])
+        @followed.followers.delete(@user)
+        @followed.save
+
+        redirect_back fallback_location: @user
     end
 
     def meet_view
         @user = User.find_by(id: params[:id])
         @journey = Journey.new
+        @preferences = @user.preferences.map{
+            |preference| preference.proper_name
+        }
+        @user_following = @user.following
     end
 
     def meet_request
-
-    end
+        @journey = Journey.create(journey_params)
+        #byebug
+        #@journey.user = current_user
+        
+        redirect_to "/journeys/#{@journey.id}/meet_view"
+    end    
 
 
     #------------------------------------------------------------------ Private Methods
@@ -129,6 +149,11 @@ class UsersController < ApplicationController
             temp_array << key
         }
         temp_array
+    end
+
+    def journey_params
+        #byebug
+        params.require(:journey).permit(:point1, :point2, :radius, :mode, :preference)
     end
 
 end

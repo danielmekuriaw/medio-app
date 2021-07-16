@@ -1,27 +1,39 @@
 
-<h2> Meet up! </h2>
+<h2 align="center"> Meet up! </h2>
+<h4 align="center"> Let's help you decide where you'll meet your friends in-person</h4>
+    <%= form_with model: @journey, url: "/users/:id/meet_view", html: {align: "center"} do |f|%>
+        <br>
+        <strong> <%= f.label "Your Location"%> </strong> <br>
+        <%= f.text_field :point1%> <br><br><br>
 
-<%= form_with model: @journey do |f|%>
-    <br>
-    <strong> <%= f.label "Your Location"%> </strong> <br>
-    <%= f.text_field :point1%> <br><br><br>
+        <strong> <%= f.label "Pick a Friend"%> </strong> <br><br>
+        <%= f.collection_select(:user_id, @user_following, :id, :name, prompt: true) %> <br>
+        
+        <h3> OR </h3>
+        <strong> <%= f.label "Type Your Friend's Location below"%> </strong> <br><br>
+        <%= f.text_field :point2%><br><br>
 
-    <strong> <%= f.label "Pick a Friend"%> </strong> <br><br>
-    <%= f.collection_select(:user_id, @user.following, :id, :name, prompt: true) %> <br>
-    
-    <h3> OR </h3>
-    <strong> <%= f.label "Type Your Friend's Location below"%> </strong> <br><br>
-    <%= f.text_field :point2%><br><br>
-    
+        <strong> <%= f.label "Mode of Travel "%> <strong>
+        <%= f.select :mode, ["DRIVING", "WALKING", "BYCYCLING", "TRANSIT" ]%> <br><br>
 
-    <%= f.submit "Meet Up!"%>
-<% end %>
+        <%= f.label "Preference for the day"%>
+        <%= f.select :preference, @preferences%> <br><br>
+        
+        <strong> <%= f.label "Radius of Search"%> </strong> <br><br>
 
-<br>
+        <%= f.number_field :radius%>  meters <p> <strong> (Caution: The Maximum is 50,000 meters) </strong> </p><br><br><br>
+        
+        <%= f.submit "Meet Up!"%>
 
-<iframe
+    <% end %>
+
+    <p align="center"> <iframe
   width="800"
   height="400"
   frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAmCf0SWHM3vMqJi6oCkLkPaRq3GJ57tis&q=Eiffel+Tower,Paris+France" allowfullscreen>
-</iframe>
+</iframe> </p>
+
+<br>
+
+

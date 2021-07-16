@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20210715061033) do
   create_table "journeys", force: :cascade do |t|
     t.string "point1"
     t.string "point2"
+    t.string "mode"
+    t.string "radius", default: "5000"
+    t.string "preference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

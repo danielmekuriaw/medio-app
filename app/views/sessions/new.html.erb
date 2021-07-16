@@ -1,14 +1,16 @@
-<h1> Log in <h1>
+<h1 align='center'> Welcome to Medio! Connect and Meet with others! </h1>
+<h4 align='center'> Here to build lasting connections </h4> 
+<h3 align='center'> Log in </h3>
 
-<%= form_with scopel: :user, url: login_path do |f|%>
+<%= form_with scope: :user, url: login_path, html: {align: "center"} do |f|%>
                 
-    <strong> <%=f.label :username%> </strong>
+    <p align='center'> <strong> <%=f.label :username%> </strong> </p>
     <%=f.text_field :username%> <br> <br>
 
-    <strong> <%=f.label :password%> </strong>
+    <p><strong> <%=f.label :password%> </strong> </p>
     <%=f.password_field :password%> <br><br>
 
-    <%= f.submit "Sign Up"%>
+    <%= f.submit "Log In"%>
 
 <% end %>
 
