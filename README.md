@@ -1,10 +1,10 @@
 # README
 
-Medio
+### Medio
 
 An innovative way to find and select a meeting location - created by [Daniel Mekuriaw](https://github.com/danielmekuriaw) and [Eten Utek](https://github.com/eten123).
 
-This project is developed using Ruby, Rails, ActiveRecord, SQLite3, the Google Maps API and several other Ruby gems. For the sake of simplicity and due to the limited amount of time for development, it makes use of data from the **Faker** Ruby gem outside of accepting direct user inputs for user instances.
+This project is developed using Ruby, Rails, ActiveRecord, SQLite3, the Google Maps API and several other Ruby gems. For the sake of simplicity and due to the limited amount of time for development, it makes use of data from the **Faker** Ruby gem outside of accepting direct user inputs for user instances. This project is created as a phase 2 project for the Yale x Flatiron bootcamp by the two developers.
 
 ### Description
 
@@ -25,7 +25,7 @@ Medio allows users to select the type of place they would like to meet at, and t
 
 * **geographiclib** - for using Geodesic functions (specially useful to find midpoints)
 
-**NOTE:** *If you want to work to this project, make sure you are using the Rails 5.1.7 version (or at least specify this version when calling any of the rails generate commands). Using latest Rails versions may result conflicts, and so if you have a later version, you may have to deprecate. Use the command below to verify which Rails version you have installed. It should return the number of the Rails version*
+**NOTE:** *If you want to contribute to this project, make sure you are using the Rails 5.1.7 version (or at least specify this version when calling any of the rails generate commands). Using latest Rails versions may result conflicts, and so if you have a later version, you may have to call a deprecated rails version command. Use the command below to see which Rails version you have installed.*
 
 ```Ruby
 rails --version
