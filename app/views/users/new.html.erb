@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-    <html>
-        <head>
-            <title>Sign Up!</title>
-        </head>
-
-        <body>
-
             <h1 align="center">Welcome to Medio!</h1>
+
+<%= render(partial: "errors/errors", locals: {model: @user})%>
 
             <%= form_with model: @user do |f|%>
                 <strong> <%=f.label :first_name %> </strong>
@@ -49,7 +43,3 @@
                 <%= f.submit "Sign Up"%>
 
             <% end %>
-
-        </body>
-
-    </html>

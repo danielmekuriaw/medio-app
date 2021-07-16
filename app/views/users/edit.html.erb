@@ -1,5 +1,7 @@
             <h1 align="center"> Hi <%= @user.first_name%>! You can edit your profile below: </h1>
 
+<%= render(partial: "errors/errors", locals: {model: @user})%>
+
             <%= form_with model: @user do |f|%>
                 <strong> <%=f.label :first_name %> </strong>
                 <%= f.text_field :first_name%> <br> <br>
