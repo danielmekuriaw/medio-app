@@ -4,14 +4,14 @@
 <%= form_with model: @journey do |f|%>
     <br>
     <strong> <%= f.label "Your Location"%> </strong> <br>
-    <%= f.text_field :origin%> <br><br><br>
+    <%= f.text_field :point1%> <br><br><br>
 
     <strong> <%= f.label "Pick a Friend"%> </strong> <br><br>
     <%= f.collection_select(:user_id, @user.following, :id, :name, prompt: true) %> <br>
     
     <h3> OR </h3>
     <strong> <%= f.label "Type Your Friend's Location below"%> </strong> <br><br>
-    <%= f.text_field :destination%><br><br>
+    <%= f.text_field :point2%><br><br>
     
 
     <%= f.submit "Meet Up!"%>

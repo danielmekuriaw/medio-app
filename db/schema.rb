@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20210715061033) do
   end
 
   create_table "journeys", force: :cascade do |t|
-    t.string "origin"
-    t.string "destination"
+    t.string "point1"
+    t.string "point2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20210715061033) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
+    t.string "password_digest"
     t.integer "age"
     t.datetime "birth_date"
     t.text "bio"

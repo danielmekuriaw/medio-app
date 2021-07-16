@@ -29,8 +29,8 @@ class UsersController < ApplicationController
         #location.save
         #geocode_result = gmaps.geocode(address: location.name)      
         
-        if @user.valid?
-          @user.save
+        if @user.save
+          session[:user_id] = @user.id
           redirect_to user_path(@user)
         else
           render :new
@@ -118,7 +118,7 @@ class UsersController < ApplicationController
             :museum, :night_club, :park, :pet_store, :pharmacy, :restaurant, :shopping_mall, 
             :spa, :stadium, :subway_station, :supermarket, :synagogue, :taxi_stand, :tourist_attraction, 
             :train_station, :transit_station, :university, :zoo]
-        params.require(:user).permit(:first_name, :last_name, :username, :age, :birth_date, :bio, :location, preferences: preferences)
+        params.require(:user).permit(:first_name, :last_name, :username, :age, :birth_date, :bio, :location, :password, preferences: preferences)
     end
 
     def selected_preferences

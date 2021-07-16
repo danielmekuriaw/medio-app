@@ -4,6 +4,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :last_name
       t.string :username
+      t.string :password_digest
+
       t.integer :age
       t.datetime :birth_date
       t.text :bio, default: nil

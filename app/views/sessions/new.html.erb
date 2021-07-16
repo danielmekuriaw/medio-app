@@ -1,0 +1,15 @@
+<h1> Log in <h1>
+
+<%= form_with scopel: :user, url: login_path do |f|%>
+                
+    <strong> <%=f.label :username%> </strong>
+    <%=f.text_field :username%> <br> <br>
+
+    <strong> <%=f.label :password%> </strong>
+    <%=f.password_field :password%> <br><br>
+
+    <%= f.submit "Sign Up"%>
+
+<% end %>
+
+<h4> <%= flash[:message] if flash[:message]%> </h4>

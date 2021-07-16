@@ -9,11 +9,11 @@
 User.destroy_all
 Preference.destroy_all
 
-userx = User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
+userx = User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime, password: "danielm")
 
 10.times do
-    user= User.create!(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
-    userx.followers << User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime )
+    user= User.create!(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime, password: Faker::Internet.password)
+    userx.followers << User.create(first_name: Faker::FunnyName.name, last_name: Faker::FunnyName.name, username: Faker::FunnyName.name, bio: Faker::Company.bs, age: rand(10..50), birth_date: Faker::Date.in_date_period.to_datetime, password: Faker::Internet.password)
 end
 #puts User.all.count
 User.all.each do |user|
