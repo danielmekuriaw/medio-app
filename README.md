@@ -47,163 +47,308 @@ To run the website after cloning the repository, use the ```rails s ``` command 
 ### File Structure
 Medio-app
 ├── Gemfile
-|
+
 ├── Gemfile.lock
-|
+
 ├── README.md
-|
+
 ├── Rakefile
-|
+
 ├── app
-|   |
+
 │   ├── assets
-|   |
+
 │   │   ├── config
+
 │   │   │   └── manifest.js
+
 │   │   ├── images
+
 │   │   ├── javascripts
+
 │   │   │   ├── application.js
+
 │   │   │   ├── cable.js
+
 │   │   │   ├── channels
+
 │   │   │   ├── locations.coffee
+
 │   │   │   ├── preferences.coffee
+
 │   │   │   ├── sessions.coffee
+
 │   │   │   ├── user_preferences.coffee
+
 │   │   │   └── users.coffee
+
 │   │   └── stylesheets
+
 │   │       ├── application.css
+
 │   │       ├── locations.scss
+
 │   │       ├── preferences.scss
+
 │   │       ├── sessions.scss
+
 │   │       ├── user_preferences.scss
+
 │   │       └── users.scss
+
 │   ├── channels
+
 │   │   └── application_cable
+
 │   │       ├── channel.rb
+
 │   │       └── connection.rb
+
 │   ├── controllers
+
 │   │   ├── application_controller.rb
+
 │   │   ├── concerns
+
 │   │   ├── journeys_controller.rb
+
 │   │   ├── sessions_controller.rb
+
 │   │   └── users_controller.rb
+
 │   ├── helpers
+
 │   │   ├── application_helper.rb
+
 │   │   ├── locations_helper.rb
+
 │   │   ├── preferences_helper.rb
+
 │   │   ├── sessions_helper.rb
+
 │   │   ├── user_preferences_helper.rb
+
 │   │   └── users_helper.rb
+
 │   ├── jobs
+
 │   │   └── application_job.rb
+
 │   ├── mailers
+
 │   │   └── application_mailer.rb
+
 │   ├── models
+
 │   │   ├── application_record.rb
+
 │   │   ├── concerns
+
 │   │   ├── friendship.rb
+
 │   │   ├── journey.rb
+
 │   │   ├── location.rb
+
 │   │   ├── preference.rb
+
 │   │   ├── user.rb
+
 │   │   └── user_preference.rb
+
 │   └── views
+
 │       ├── errors
+
 │       │   └── _errors.html.erb
+
 │       ├── journeys
+
 │       │   └── meet_view.html.erb
+
 │       ├── layouts
+
 │       │   ├── _nav.html.erb
+
 │       │   ├── application.html.erb
+
 │       │   ├── mailer.html.erb
+
 │       │   └── mailer.text.erb
+
 │       ├── sessions
+
 │       │   └── new.html.erb
+
 │       ├── shared
+
 │       │   └── _navbar.html.erb
+
 │       └── users
+
 │           ├── aboutus.html.erb
+
 │           ├── edit.html.erb
+
 │           ├── followers.html.erb
+
 │           ├── following.html.erb
+
 │           ├── meet_view.html.erb
+
 │           ├── new.html.erb
+
 │           └── show.html.erb
+
 ├── bin
+
 │   ├── bundle
+
 │   ├── rails
+
 │   ├── rake
+
 │   ├── setup
+
 │   ├── spring
+
 │   ├── update
+
 │   └── yarn
+
 ├── config
+
 │   ├── application.rb
+
 │   ├── boot.rb
+
 │   ├── cable.yml
+
 │   ├── database.yml
+
 │   ├── environment.rb
+
 │   ├── environments
+
 │   │   ├── development.rb
+
 │   │   ├── production.rb
+
 │   │   └── test.rb
+
 │   ├── initializers
+
 │   │   ├── application_controller_renderer.rb
+
 │   │   ├── assets.rb
+
 │   │   ├── backtrace_silencers.rb
+
 │   │   ├── cookies_serializer.rb
+
 │   │   ├── filter_parameter_logging.rb
+
 │   │   ├── inflections.rb
+
 │   │   ├── mime_types.rb
+
 │   │   ├── validates_timeliness.rb
+
 │   │   └── wrap_parameters.rb
+
 │   ├── locales
+
 │   │   ├── en.yml
+
 │   │   └── validates_timeliness.en.yml
+
 │   ├── puma.rb
+
 │   ├── routes.rb
+
 │   ├── secrets.yml
+
 │   └── spring.rb
+
 ├── config.ru
+
 ├── db
+
 │   ├── development.sqlite3
+
 │   ├── migrate
+
 │   │   ├── 20210714061409_create_users.rb
+
 │   │   ├── 20210714061429_create_preferences.rb
+
 │   │   ├── 20210714061521_create_user_preferences.rb
+
 │   │   ├── 20210714061554_create_locations.rb
+
 │   │   ├── 20210714151237_create_friendship.rb
+
 │   │   └── 20210715061033_create_journeys.rb
+
 │   ├── schema.rb
+
 │   └── seeds.rb
+
 ├── lib
+
 │   ├── assets
+
 │   └── tasks
+
 ├── log
+
 │   └── development.log
+
 ├── package.json
+
 ├── public
+
 │   ├── 404.html
+
 │   ├── 422.html
+
 │   ├── 500.html
+
 │   ├── apple-touch-icon-precomposed.png
+
 │   ├── apple-touch-icon.png
+
 │   ├── favicon.ico
+
 │   └── robots.txt
+
 ├── test
-│   ├── application_system_test_case.rb
-│   ├── controllers
-│   │   └── user_preferences_controller_test.rb
-│   ├── fixtures
-│   │   ├── files
-│   │   └── user_preferences.yml
-│   ├── helpers
-│   ├── integration
-│   ├── mailers
-│   ├── models
-│   │   └── user_preference_test.rb
-│   ├── system
-│   └── test_helper.rb
+
+   ├── application_system_test_case.rb
+
+   ├── controllers
+
+   │   └── user_preferences_controller_test.rb
+
+   ├── fixtures
+
+   │   ├── files
+
+   │   └── user_preferences.yml
+
+   ├── helpers
+
+   ├── integration
+
+   ├── mailers
+
+   ├── models
+
+   │   └── user_preference_test.rb
+
+   ├── system
+
+   └── test_helper.rb
 
 ### Project Requirements
 
