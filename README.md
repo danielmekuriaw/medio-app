@@ -42,7 +42,7 @@ gem install name_of_gem
 ```
 
 ### Running the Program
-To run the website through the repository, use the ```Ruby rails s ``` to run a local server, and open this local host address through your browser.
+To run the website through the repository, use the ```rails s ``` to run a local server, and open this local host address through your browser.
 
 ### File Structure
 

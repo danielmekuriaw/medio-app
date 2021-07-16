@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:show, :edit, :update, :delete, :followers, :following, :follow, :meet_view]
     
-
     def aboutus
     end
 
