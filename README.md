@@ -1,6 +1,4 @@
-# README
-
-## Medio
+# Medio
 
 An innovative way to find and select a meeting location - created by [Daniel Mekuriaw](https://github.com/danielmekuriaw) and [Eten Utek](https://github.com/eten123).
 
