@@ -31,7 +31,19 @@ Medio allows users to select the type of place they would like to meet at, and t
 rails --version
 ```
 
-The next step is installing the required gems. This can be done with the following command:
+To call rails commands with a specific rails version, you can your commands as:
+
+```Ruby
+rails _version_number_ action
+```
+
+In the case of the generate commands for this project, they would start like:
+
+```Ruby
+rails _5.1.7_ generate
+```
+
+The next step to work with this project is installing the required gems. This can be done with the following command:
 ```Ruby 
 bundle install
 ```
