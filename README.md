@@ -14,7 +14,7 @@ Making friends throughout the coronavirus pandemic has become increasingly diffi
 Our goal is to provide a simple yet powerful tool that helps people find places to meet with friends at the Medio (Spanis for halfway) mark between them.
 
 ### How it works
-Medio allows users to select the type of place they would like to meet at, and through the use of the Google Maps API, it locates and suggests locations of the selected type whose distance from each user who are meeting is the least. In other words, it finds a midpoint location of a selected type between the locations of two different users (or it could also be two different locations) that minimizes the difference in the amount of time each user would have to travel to get to a meeting location.
+Medio allows users to select the type of place they would like to meet at, and through the use of the Google Maps API, it locates and suggests locations of the selected type whose distance from each user who are meeting is the least. In other words, it finds a midpoint location of a selected type between the locations of two different users (or it could also be two different locations) that minimizes the difference in the amount of time each user would have to travel to get to the meeting location.
 
 ### Gems
 
