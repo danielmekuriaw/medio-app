@@ -31,7 +31,7 @@ Medio allows users to select the type of place they would like to meet at, and t
 rails --version
 ```
 
-To call rails commands with a specific rails version, you can your commands as:
+To call rails commands with a specific rails version, you can format your commands as:
 
 ```Ruby
 rails _version_number_ action
